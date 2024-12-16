@@ -6,8 +6,8 @@ Install dependencies
 
 .. code-block:: bash
 
-    sudo apt-get install qemu-user-static
-    sudo snap install ubuntu-image
+    sudo apt-get install snapd qemu-user-static
+    sudo snap install --classic ubuntu-image
 
 
 Build image
