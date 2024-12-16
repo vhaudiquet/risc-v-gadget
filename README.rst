@@ -22,6 +22,14 @@ For debugging add --workdir /tmp/workdir.
 First boot
 ----------
 
+The image contains U-Boot to boot on:
+
+* Microchip Icicle Kit
+* SiFive HiFive Unmatched
+* StarFive VisionFive 2 1.3b
+
+To boot on QEMU use the following commands:
+
 .. code-block:: bash
 
     sudo apt-get install opensbi u-boot-qemu
