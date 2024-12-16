@@ -68,7 +68,8 @@ install/u-boot:
 	rm -rf build
 
 image:
-	sudo ubuntu-image classic image-definition.yaml
+	sudo rm -rf workdir
+	sudo ubuntu-image --workdir workdir classic image-definition.yaml
 
 image-debug:
 	sudo rm -rf workdir
