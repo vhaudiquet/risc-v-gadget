@@ -6,7 +6,8 @@ Install dependencies
 
 .. code-block:: bash
 
-    sudo apt-get install snapd qemu-user-static
+    sudo apt-get update
+    sudo apt-get install git snapd qemu-user-static ubuntu-dev-tools
     sudo snap install --classic ubuntu-image
 
 
@@ -32,6 +33,7 @@ To boot on QEMU use the following commands:
 
 .. code-block:: bash
 
+    sudo apt-get update
     sudo apt-get install opensbi qemu-system-misc u-boot-qemu
     qemu-system-riscv64 \
     -machine virt -nographic -m 2048 -smp 4 \
