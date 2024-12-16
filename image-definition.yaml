@@ -31,10 +31,8 @@ rootfs:
       - standard
 customization:
   extra-packages:
-    -
-      name: "flash-kernel"
-    -
-      name: "grub-efi-riscv64"
+    - name: "flash-kernel"
+    - name: "grub-efi-riscv64"
   extra-snaps:
     - name: snapd
   fstab:
