@@ -32,7 +32,7 @@ To boot on QEMU use the following commands:
 
 .. code-block:: bash
 
-    sudo apt-get install opensbi u-boot-qemu
+    sudo apt-get install opensbi qemu-system-misc u-boot-qemu
     qemu-system-riscv64 \
     -machine virt -nographic -m 2048 -smp 4 \
     -bios /usr/lib/riscv64-linux-gnu/opensbi/generic/fw_jump.bin \
