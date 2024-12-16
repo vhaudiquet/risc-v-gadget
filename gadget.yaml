@@ -45,7 +45,7 @@ volumes:
           - source: grub/grubriscv64.efi
             target: EFI/ubuntu/grubriscv64.efi
           - source: grub/grub.cfg
-            target: EFI/debian/grub.cfg
+            target: EFI/ubuntu/grub.cfg
           - source: dtb/
             target: dtb/
       - name: CIDATA
