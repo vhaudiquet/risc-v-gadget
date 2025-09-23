@@ -34,7 +34,7 @@ install/grub:
 	rm -rf build
 	mkdir build
 	# Monolithic images are not yet backported to Ubuntu 22.04.
-	cd build && pull-lp-debs -a riscv64 grub2 '' oracular
+	cd build && pull-lp-debs -a riscv64 grub2 $(SERIES)
 	cd build && dpkg -x grub-efi-riscv64-unsigned*.deb grub/
 	mkdir -p $(DESTDIR)/grub
 	cp ./build/grub/usr/lib/grub/riscv64-efi/monolithic/grubriscv64.efi $(DESTDIR)/grub/
@@ -45,7 +45,7 @@ install/u-boot:
 	rm -rf build
 	mkdir build
 	rm -rf build/u-boot-sifive*
-	cd build && pull-lp-debs -a riscv64 u-boot '' $(SERIES)
+	cd build && pull-lp-debs -a riscv64 u-boot $(SERIES)
 	# SiFive HiFive Unmatched
 	cd build && dpkg -x u-boot-sifive*.deb u-boot-sifive/
 	mkdir -p $(DESTDIR)/u-boot-sifive-unmatched
