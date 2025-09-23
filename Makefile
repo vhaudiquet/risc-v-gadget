@@ -23,7 +23,7 @@ install/cidata:
 install/dtb:
 	rm -rf build
 	mkdir build
-	cd build && pull-lp-debs -a riscv64 linux-riscv '' $(SERIES)
+	cd build && pull-lp-debs -a riscv64 linux-riscv $(SERIES)
 	cd build && dpkg -x linux-modules*.deb linux-modules/
 	mkdir -p $(DESTDIR)/dtb
 	cp -r ./build/linux-modules/lib/firmware/*-generic/device-tree/* \
