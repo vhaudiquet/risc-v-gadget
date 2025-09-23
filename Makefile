@@ -33,9 +33,8 @@ install/dtb:
 install/grub:
 	rm -rf build
 	mkdir build
-	# Monolithic images are not yet backported to Ubuntu 22.04.
 	cd build && pull-lp-debs -a riscv64 grub2 $(SERIES)
-	cd build && dpkg -x grub-efi-riscv64-unsigned*.deb grub/
+	cd build && dpkg -x grub-efi-riscv64-bin*.deb grub/
 	mkdir -p $(DESTDIR)/grub
 	cp ./build/grub/usr/lib/grub/riscv64-efi/monolithic/grubriscv64.efi $(DESTDIR)/grub/
 	cp grub.cfg $(DESTDIR)/grub/
