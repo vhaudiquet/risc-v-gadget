@@ -30,5 +30,7 @@ jobs:
         run: sudo ubuntu-image --workdir work --debug classic image-definition.yaml
       - name: Install test dependencies
         run: sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y python3-pexpect opensbi qemu-system-riscv64 u-boot-qemu
+      - name: Set image permissions
+        run: sudo chown $USER work/ubuntu-24.04-preinstalled-server-riscv64.img
       - name: Test image
         run: python .github/workflows/test.py work/ubuntu-24.04-preinstalled-server-riscv64.img
