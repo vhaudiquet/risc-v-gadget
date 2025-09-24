@@ -28,3 +28,13 @@ jobs:
         run: sudo snap install --classic ubuntu-image
       - name: Build image
         run: sudo ubuntu-image --workdir work --debug classic image-definition.yaml
+      - name: Upload image as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ubuntu-24.04-preinstalled-server-riscv64.img
+          path: work/ubuntu-24.04-preinstalled-server-riscv64.img
+      - name: Upload manifest as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ubuntu-24.04-preinstalled-server-riscv64.manifest
+          path: work/ubuntu-24.04-preinstalled-server-riscv64.manifest
