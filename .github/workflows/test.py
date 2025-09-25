@@ -1,11 +1,17 @@
 #!/usr/bin/python3
 """ Test an image """
+""" Usage: python test.py <image> [debug] """
 
 import pexpect
 import sys
 
 def main():
     image = sys.argv[1]
+    debug = (sys.argv[2] == "debug") if len(sys.argv) >= 3 else False
+
+    if debug:
+        print("Enabling debug mode.")
+
     print(f"Testing image '{image}'. Starting qemu...")
     p = pexpect.spawn(f'qemu-system-riscv64 \
         -machine virt -nographic -m 2048 -smp 4 \
@@ -15,9 +21,12 @@ def main():
         -device virtio-rng-pci \
         -drive file={image},format=raw,if=virtio'
     )
+    
+    if debug:
+        p.logfile = sys.stdout.buffer
         
     print("Waiting for the virtual machine to boot in qemu...")
-    p.expect("ubuntu login:", timeout=120)
+    p.expect("Cloud-init v.* finished", timeout=120)
     print("Found ubuntu login prompt, trying to log in...")
     p.sendline("ubuntu")
     p.expect("Password:")
