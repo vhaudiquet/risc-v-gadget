@@ -26,8 +26,12 @@ def main():
         p.logfile = sys.stdout.buffer
         
     print("Waiting for the virtual machine to boot in qemu...")
-    p.expect("Cloud-init v.* finished", timeout=240)
-    print("Found ubuntu login prompt, trying to log in...")
+    expects = ["Cloud-init v.* finished", "ubuntu login:"]
+    found = p.expect(expects, timeout=240)
+    print(f"Found '{expects[found]}', waiting for '{expects[1 - found]}'...")
+    p.expect(expects[1 - found], timeout=60)
+    
+    print("Machine initialization done, trying to log in...")
     p.sendline("ubuntu")
     p.expect("Password:")
     p.sendline("ubuntu")
