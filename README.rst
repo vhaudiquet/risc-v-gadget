@@ -10,7 +10,6 @@ Install dependencies
     sudo apt-get install git snapd qemu-user-static ubuntu-dev-tools
     sudo snap install --classic ubuntu-image
 
-
 Build image
 -----------
 
