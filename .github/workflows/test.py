@@ -13,10 +13,12 @@ def main():
         print("Enabling debug mode.")
 
     print(f"Testing image '{image}'. Starting qemu...")
-    p = pexpect.spawn(f'qemu-system-riscv64 \
+    p = pexpect.spawn(f'cp /usr/share/qemu-efi-riscv64/RISCV_VIRT_VARS.fd . &&\
+        qemu-system-riscv64 \
+        -cpu rva23s64 \
         -machine virt -nographic -m 2048 -smp 4 \
-        -bios /usr/lib/riscv64-linux-gnu/opensbi/generic/fw_jump.bin \
-        -kernel /usr/lib/u-boot/qemu-riscv64_smode/uboot.elf \
+        -drive if=pflash,format=raw,unit=0,file=/usr/share/qemu-efi-riscv64/RISCV_VIRT_CODE.fd,readonly=on \
+        -drive if=pflash,format=raw,unit=1,file=RISCV_VIRT_VARS.fd,readonly=off \
         -device virtio-net-device,netdev=eth0 -netdev user,id=eth0 \
         -device virtio-rng-pci \
         -drive file={image},format=raw,if=virtio'
